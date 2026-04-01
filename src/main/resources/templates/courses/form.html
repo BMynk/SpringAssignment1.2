@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${pageTitle}">Course Form</title>
+</head>
+<body>
+
+<h1 th:text="${pageTitle}">Course Form</h1>
+
+<form th:action="${course.id == null} ? '/courses' : '/courses/update/' + ${course.id}"
+      th:object="${course}"
+      method="post">
+
+  <div>
+    <label for="courseCode">Course Code:</label>
+    <input type="text" id="courseCode" th:field="*{courseCode}">
+    <div th:if="${#fields.hasErrors('courseCode')}" th:errors="*{courseCode}"></div>
+  </div>
+
+  <br>
+
+  <div>
+    <label for="courseName">Course Name:</label>
+    <input type="text" id="courseName" th:field="*{courseName}">
+    <div th:if="${#fields.hasErrors('courseName')}" th:errors="*{courseName}"></div>
+  </div>
+
+  <br>
+
+  <div>
+    <label for="level">Level:</label>
+    <input type="number" id="level" th:field="*{level}">
+    <div th:if="${#fields.hasErrors('level')}" th:errors="*{level}"></div>
+  </div>
+
+  <br>
+
+  <div>
+    <label for="category">Category:</label>
+    <select id="category" th:field="*{category}">
+      <option value="">-- Select Category --</option>
+      <option th:each="cat : ${categories}"
+              th:value="${cat}"
+              th:text="${cat}">
+      </option>
+    </select>
+    <div th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></div>
+  </div>
+
+  <br>
+
+  <div>
+    <button type="submit">Save</button>
+    <a th:href="@{/courses}">Cancel</a>
+  </div>
+
+</form>
+
+</body>
+</html>
