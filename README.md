@@ -24,6 +24,8 @@ Built strictly according to the assignment specification:
 - **Part A**: Returns exactly **2 Foundation + 5 Undergraduate + 4 Honours** courses
 - **Part B**: Full **CRUD** operations with **Bean Validation**, proper exception handling, and clean architecture
 
+**Repository**: [https://github.com/BMynk/SpringAssignment1.2.git](https://github.com/BMynk/SpringAssignment1.2.git)
+
 ---
 
 ### 👥 Team - Case Sensitive Warriors
@@ -36,6 +38,31 @@ Built strictly according to the assignment specification:
 | **Mtimba Misokuhle**        | Controller layer (`CourseController.java`) - all REST endpoints |
 | **Yeboah Mishael Kwaku**    | Bean Validation, custom exceptions, error handling & Postman collection |
 | **Zimase Afika**            | Documentation (README, Swagger/OpenAPI setup), testing & final polishing |
+
+---
+
+### 🛠️ Problems Faced & How We Fixed Them
+
+During development, we encountered a critical bug in the level filtering logic:  
+**Users could select any course level (Honours, PhD, Foundation, Undergraduate, or Masters) regardless of what was actually chosen.** This happened because the conditional statements in the service layer were not properly restricting the results based on the selected `Level` enum.
+
+**Solution**: We thoroughly reviewed and corrected the conditional statements in `CourseService.java`. We implemented stricter validation and filtering logic using proper `if-else` chains and enum comparisons, ensuring that only courses matching the exact selected level are returned. This fix now enforces the assignment requirements accurately.
+
+---
+
+### ⚠️ Challenges Encountered
+
+- **Dependency Configuration**: Setting up the correct Spring Boot starters, PostgreSQL driver, and validation dependencies in `pom.xml` took significant time and troubleshooting.
+- **Bean Validation**: Implementing and customizing validation annotations (`@NotBlank`, `@Positive`, custom constraints, etc.) while ensuring meaningful error messages required multiple iterations.
+- **Time Constraints for HTML Files**: Limited time was available for creating and styling the optional HTML frontend pages, which affected the depth of the UI polish.
+
+---
+
+### 📚 Resources That Helped Us
+
+A big thank you to this excellent YouTube tutorial that helped us navigate and better understand the project structure, Spring Boot best practices, and REST API implementation:
+
+→ **[Spring Boot Tutorial for Beginners](https://youtu.be/gJrjgg1KVL4?si=wh7tebND4eokUIcT)**
 
 ---
 
